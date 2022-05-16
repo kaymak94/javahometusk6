@@ -12,12 +12,10 @@ public class StatsService {
     }
 
     public long sumMiddle(long[] sales) {
-        int sumAll = 0;
-        int sumMiddle = 0;
-        for (long sale : sales) {
-            sumAll += sale;
-            sumMiddle = sumAll / 12;
-        }
+        long sumAll = sumAll(sales);
+        long months = 12;
+        long sumMiddle = sumAll / months;
+
         return sumMiddle;
 
     }
@@ -49,15 +47,10 @@ public class StatsService {
     }
 
     public long amountLessMiddle(long[] sales) {
-        int sumAll = 0;
-        int sumMiddle;
-        int amountMinMonth = 0;
+        long sumMiddle = sumMiddle(sales);
+        long amountMinMonth = 0;
         for (long sale : sales) {
-            sumAll += sale;
-        }
-        sumMiddle = sumAll / 12;
-        for (long sale1 : sales) {
-            if (sumMiddle > sale1) {
+            if (sumMiddle > sale) {
                 amountMinMonth++;
 
             }
@@ -69,24 +62,19 @@ public class StatsService {
 
 
     public long amountOverMiddle(long[] sales) {
-        int sumAll = 0;
-        int sumMiddle;
-        int amountMaxMonth = 0;
+        long sumMiddle = sumMiddle(sales);
+        long amountMaxMonth = 0;
         for (long sale : sales) {
-            sumAll += sale;
-
-        }
-        sumMiddle = sumAll / 12;
-        for (long sale1 : sales)
-            if (sumMiddle < sale1) {
+            if (sumMiddle < sale) {
                 amountMaxMonth++;
 
-
             }
+
+
+        }
         return amountMaxMonth;
     }
 }
-
 
 
 
